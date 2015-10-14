@@ -1,5 +1,6 @@
 import React from 'react';
 import pureRender from 'pure-render-decorator';
+import classNames from 'classnames';
 
 @pureRender
 export default class Vote extends React.Component {
@@ -19,6 +20,7 @@ export default class Vote extends React.Component {
     const activities = this.getPair().map((activity) => {
       return (
         <button key={activity}
+                className={classNames({voted: this.hasVotedFor(activity)})}
                 onClick={() => this.props.vote(activity)}
                 disabled={this.isDisabled()}>
           <h1>{activity}</h1>
