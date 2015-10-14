@@ -1,0 +1,11 @@
+{
+  "name": "voting-client",
+  "version": "0.0.1",
+  "description": "Small client side app to vote on activities",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Ryan Yogan <ryanyogan@gmail.com>",
+  "license": "I don't care"
+}
