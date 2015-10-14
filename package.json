@@ -4,7 +4,8 @@
   "description": "Small client side app to vote on activities",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive"
+    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive",
+    "test:watch": "npm run test -- --watch"
   },
   "author": "Ryan Yogan <ryanyogan@gmail.com>",
   "license": "I don't care",
