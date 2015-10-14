@@ -27,6 +27,7 @@
   "dependencies": {
     "classnames": "^2.1.5",
     "immutable": "^3.7.5",
+    "pure-render-decorator": "^0.1.0",
     "react": "^0.14.0",
     "react-dom": "^0.14.0"
   }

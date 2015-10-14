@@ -1,5 +1,7 @@
 import React from 'react';
+import pureRender from 'pure-render-decorator';
 
+@pureRender
 export default class Winner extends React.Component {
   render() {
     return (
