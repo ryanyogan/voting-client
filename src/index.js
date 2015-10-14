@@ -7,6 +7,6 @@ require('./styles/main.css'); // Style mixin
 const pair = ['Watch a movie', 'Go to dinner'];
 
 ReactDOM.render(
-  <Voting pair={pair} />,
+  <Voting pair={pair} winner='Watch a movie' />,
   document.getElementById('app')
 );
