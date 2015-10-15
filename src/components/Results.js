@@ -1,11 +1,12 @@
 import React from 'react';
 import pureRender from 'pure-render-decorator';
+import { connect } from 'react-redux';
 import Winner from './Winner';
 
 const VOTE_WIDTH_PERCENT = 8;
 
 @pureRender
-export default class Results extends React.Component {
+export class Results extends React.Component {
   getPair() {
     return this.props.pair || [];
   }
@@ -46,3 +47,13 @@ export default class Results extends React.Component {
       </div>;
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    pair: state.getIn(['vote', 'pair']),
+    tally: state.getIn(['vote', 'tally']),
+    winner: state.get('winner')
+  }
+}
+
+export const ResultsContainer = connect(mapStateToProps)(Results);
