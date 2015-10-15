@@ -1,20 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Router, { Route } from 'react-router';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import reducer from './reducers/activities_reducer';
 import App from './components/App';
-import Voting from './components/Voting';
+import { VotingContainer } from './components/Voting';
 import Results from './components/Results';
 
 require('./styles/main.css'); // Style mixin
 
+const store = createStore(reducer);
+store.dispatch({
+  type: 'SET_STATE',
+  state: {
+    vote: {
+      pair: ['Eat Dinner', 'Watch Game'],
+      tally: { 'Eat Dinner': 2}
+    }
+  }
+});
+
 const routes = (
   <Route component={App}>
     <Route path='/results' component={Results} />
-    <Route path='/' component={Voting} />
+    <Route path='/' component={VotingContainer} />
   </Route>
 );
 
 ReactDOM.render(
-  <Router>{routes}</Router>,
+  <Provider store={store}>
+    <Router>{routes}</Router>
+  </Provider>,
   document.getElementById('app')
 );
