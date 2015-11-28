@@ -43,4 +43,15 @@ describe('Results', () => {
     expect(nextInvoked).to.equal(true);
   });
 
+  it('renders the winner when there is one', () => {
+    const component = renderIntoDocument(
+      <Results winner='Batman'
+               pair={['Batman', 'Ants']}
+               tally={Map()} />
+    );
+    const winner = ReactDOM.findDOMNode(component.refs.winner);
+    expect(winner).to.be.ok;
+    expect(winner.textContent).to.contain('Batman');
+  });
+
 });

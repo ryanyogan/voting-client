@@ -1,5 +1,6 @@
 import React from 'react';
 import pureRender from 'pure-render-decorator';
+import Winner from './Winner';
 
 @pureRender
 export default class Results extends React.Component {
@@ -26,7 +27,8 @@ export default class Results extends React.Component {
       </div>
     );
 
-    return (
+    return this.props.winner ?
+      <Winner ref='winner' winner={this.props.winner} /> :
       <div className='results'>
         <div>
           {entries}
@@ -38,7 +40,6 @@ export default class Results extends React.Component {
             Next
           </button>
         </div>
-      </div>
-    );
+      </div>;
   }
 }
