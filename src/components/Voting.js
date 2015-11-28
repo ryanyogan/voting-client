@@ -1,20 +1,17 @@
 import React from 'react';
+import Winner from './Winner';
+import Vote from './Vote';
 
+import pureRender from 'pure-render-decorator';
+
+@pureRender
 export default class Voting extends React.Component {
-  getPair() {
-    return this.props.pair || [];
-  }
-
   render() {
-    const entries = this.getPair().map(entry =>
-      <button key={entry}>
-        <h1>{entry}</h1>
-      </button>
-    );
-
     return (
-      <div className='voting'>
-        {entries}
+      <div>
+        {this.props.winner ?
+          <Winner ref='winner' winner={this.props.winner} /> :
+          <Vote {...this.props} />}
       </div>
     );
   }
