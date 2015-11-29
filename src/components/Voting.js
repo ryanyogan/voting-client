@@ -3,9 +3,10 @@ import Winner from './Winner';
 import Vote from './Vote';
 
 import pureRender from 'pure-render-decorator';
+import { connect } from 'react-redux';
 
 @pureRender
-export default class Voting extends React.Component {
+export class Voting extends React.Component {
   render() {
     return (
       <div>
@@ -15,4 +16,18 @@ export default class Voting extends React.Component {
       </div>
     );
   }
+}
+
+@connect(mapStateToProps)
+export class VotingContainer extends Voting {
+  constructor(props) {
+    super(props);
+  }
+}
+
+function mapStateToProps(state) {
+  return {
+    pair: state.getIn(['vote', 'pair']),
+    winner: state.get('winner')
+  };
 }

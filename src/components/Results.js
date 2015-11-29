@@ -1,9 +1,10 @@
 import React from 'react';
 import pureRender from 'pure-render-decorator';
 import Winner from './Winner';
+import { connect } from 'react-redux';
 
 @pureRender
-export default class Results extends React.Component {
+export class Results extends React.Component {
   getPair() {
     return this.props.pair || [];
   }
@@ -41,5 +42,20 @@ export default class Results extends React.Component {
           </button>
         </div>
       </div>;
+  }
+}
+
+@connect(mapStateToProps)
+export class ResultsContainer extends Results {
+  constructor(props) {
+    super(props);
+  }
+}
+
+function mapStateToProps(state) {
+  return {
+    pair: state.getIn(['vote', 'pair']),
+    tally: state.getIn(['vote', 'tally']),
+    winner: state.get('winner')
   }
 }
